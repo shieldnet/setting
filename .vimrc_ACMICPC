@@ -1,0 +1,22 @@
+set smartindent
+set tabstop=4
+set expandtab
+set shiftwidth=4 "
+set cin nu ts=4 sw=4 sts=4 mouse=a
+set viminfo='20,<1000
+
+set clipboard=unnamedplus " use OS clipboard
+
+syn on
+
+function! Compile()
+    :!g++ -std=gnu++14 -g % -o %<.out
+endfunction
+
+function! Run()
+    :!time ./%<.out
+endfunction
+
+map <F7> :call Compile()<cr>
+map <F5> :call Run()<cr>
+map <C-A> ggVG"+y
